@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/hassanAjmal531/GreenLambdaSQATasks#readme",
   "devDependencies": {
-    "cypress": "^13.10.0"
+    "cypress": "^13.10.0",
+    "cypress-xpath": "^2.0.1"
+  },
+  "dependencies": {
+    "cypress-iframe": "^1.0.1"
   }
 }

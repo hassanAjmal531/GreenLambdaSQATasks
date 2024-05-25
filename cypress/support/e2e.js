@@ -18,3 +18,15 @@ import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+require('cypress-xpath');
+require ('cypress-iframe');
+
+before(()=>{
+    cy.visit("/")
+    cy.login("FMUser102","P@ssword12!")
+})
+
+beforeEach(()=>{
+    cy.visit("/")
+})
