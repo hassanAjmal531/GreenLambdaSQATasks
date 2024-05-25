@@ -1,0 +1,239 @@
+{
+	"info": {
+		"_postman_id": "3a33df46-18a1-4db3-b4d5-713375aba2e1",
+		"name": "Green Lambda Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All employees data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/employees",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Single Employee Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"verify that status code is 200\", ()=>{\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"verify the data returned from request\", ()=> {\r",
+							"    const data = {\r",
+							"        \"id\": 1,\r",
+							"        \"employee_name\": \"Tiger Nixon\",\r",
+							"        \"employee_salary\": 320800,\r",
+							"        \"employee_age\": 61,\r",
+							"        \"profile_image\": \"\"\r",
+							"    }\r",
+							"    const reponseData = pm.response.json()\r",
+							"    console.log(reponseData)\r",
+							"    pm.expect(reponseData.status).to.eql(\"success\")\r",
+							"    pm.expect(reponseData.message).to.eql(\"Successfully! Record has been fetched.\")\r",
+							"    pm.expect(reponseData.data).to.deep.equal(data)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/employee/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"employee",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new Record in Database",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"verify the status to be 200\", ()=>{\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"pm.test(\"verify the data returned from request\", ()=> {\r",
+							"    const reponseData = pm.response.json()\r",
+							"    const requestBody = pm.request.body.raw\r",
+							"    console.log(requestBody)\r",
+							"    \r",
+							"    pm.expect(reponseData.status).to.eql(\"success\")\r",
+							"    pm.expect(reponseData.message).to.eql(\"Successfully! Record has been added.\")\r",
+							"    pm.expect(reponseData.data.id).to.be.gte(0);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"test\",\"salary\":\"123\",\"age\":\"23\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/create",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update an Employee Record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"verify that status code is 200\", ()=>{\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"verify reponse after record is updated\", ()=>{\r",
+							"    \r",
+							"    const employeeId = pm.request.url.path[3] // get the employee id from the request\r",
+							"    console.log(employeeId)\r",
+							"    const requestBody = JSON.parse(pm.request.body.raw)\r",
+							"    console.log(requestBody)\r",
+							"\r",
+							"    const userUpdatedData = {...requestBody, id: employeeId} // data to assert in postman\r",
+							"    console.log(userUpdatedData)\r",
+							"    // const reponseData = pm.response.json() // get the response of  request\r",
+							"    // pm.expect(reponseData.status).to.eql(\"success\")\r",
+							"    // pm.expect(reponseData.message).to.eql(\"Successfully! Record has been updated.\")\r",
+							"    // pm.expect(reponseData.data).to.eq(userUpdatedData)\r",
+							"    \r",
+							"   \r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"test\",\"salary\":\"123\",\"age\":\"23\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/update/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"update",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "21"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an Employees Record",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/delete/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"delete",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://dummy.restapiexample.com/api/v1"
+		}
+	]
+}
