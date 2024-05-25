@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { userData } from "../fixtures/userData"
+
 import {getFormattedCurrentDate} from "../utils/utils"
 describe('Admin', () => {
 
@@ -34,6 +34,8 @@ describe('Admin', () => {
     })
     
   })
+
+
 
   
 

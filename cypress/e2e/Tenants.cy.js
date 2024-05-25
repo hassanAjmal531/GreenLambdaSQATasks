@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
-describe('Admin', () => {
+describe('Tenants test cases', () => {
 
     const tenantName = "testing user " + new Date().getTime() 
-    it('create a new user', () => {
+    it('create a new tenant', () => {
   
       const tenantName = "testing user " + new Date().getTime() // adding time stamp in order to generate a new user name every time
       
