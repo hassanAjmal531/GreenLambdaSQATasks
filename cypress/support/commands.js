@@ -23,7 +23,9 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+ 
 
+// command to login in to the systems
 Cypress.Commands.add("login", (userName, Password)=>{
    
     cy.xpath('//header//div[@class="container-fluid"]//a[@type="button" and @href="/login/?next=/"]').click()

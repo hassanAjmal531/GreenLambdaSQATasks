@@ -1,3 +1,4 @@
+ 
 class BasePage{
     #addUserButtonLocator = '.btn-list > .btn-primary'
     clickAddButton(){

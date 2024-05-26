@@ -27,6 +27,8 @@ require ('cypress-iframe');
    
 // })
 
+
+// login before every test case
 beforeEach(()=>{
     cy.visit("/")
     cy.login("FMUser102","P@ssword12!")

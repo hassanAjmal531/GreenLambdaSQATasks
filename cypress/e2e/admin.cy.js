@@ -4,16 +4,17 @@ import GroupsPage from "../pages/groupspage";
 import HomePage from "../pages/homepage"
 import UserPage from "../pages/userspage";
 
-describe('Admin', () => {
-
+describe('Admin module', () => {
+  // initlize all the classes 
   const homePage = new HomePage();
   const userPage = new UserPage()
   const groupsPage = new GroupsPage()
+ 
 
-  it('create a new user', () => {
-
+  it('verify that new user can be created by admin', () => {
+    
+    homePage.navigateToUsersInAdminTab()
     cy.fixture("userData").then(userData=>{
-      homePage.navigateToUsersInAdminTab()
       userPage.clickAddButton()
       userPage.createNewUser(userData)
       userPage.verfiyNewUserData(userData)

@@ -1,13 +1,13 @@
 /// <reference types="cypress" />
 import HomePage from "../pages/homepage"
 import TenantsPage from "../pages/tenantsPage"
-describe('Tenants test cases', () => {
+describe('Tenants Module', () => {
 
   const tenantsPage = new TenantsPage()
   const homepage = new HomePage()
 
    
-    it('create a new tenant', () => {
+    it('verify that new tenant can be created', () => {
       homepage.navigateToTenantsInOrganizationTab()
       tenantsPage.clickAddButton()
       cy.fixture('tenantData').then(tenantData=>{
@@ -25,10 +25,6 @@ describe('Tenants test cases', () => {
         tenantsPage.quickSearhTenant(tenantData.newTenantName)
         tenantsPage.verifyTenantDetails(tenantData.newTenantName)
       })
-      
-      
-
-
       
     })
 })
