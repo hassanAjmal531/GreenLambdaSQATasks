@@ -20,7 +20,7 @@ describe('Tenants Module', () => {
 
       cy.fixture("tenantData").then(tenantData=>{
         tenantsPage.quickSearhTenant(tenantData.tenantName)
-        tenantsPage.openTenantDetail(tenantData.tenantName)
+        tenantsPage.openTenantDetail()
         tenantsPage.editTenantDetail(tenantData.newTenantName)
         tenantsPage.quickSearhTenant(tenantData.newTenantName)
         tenantsPage.verifyTenantDetails(tenantData.newTenantName)

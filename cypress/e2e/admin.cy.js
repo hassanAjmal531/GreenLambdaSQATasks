@@ -27,8 +27,8 @@ describe('Admin module', () => {
     homePage.navigateToGroupsInUsersTab()
     cy.fixture("groupsData").then(groupsData=>{
       groupsPage.clickAddButton()
-      groupsPage.createNewGroup(groupsData)
       cy.fixture("userData").then(userData=>{
+        groupsPage.createNewGroup(groupsData, userData)
         groupsPage.verifyNewGroup(groupsData, userData)
       })
 

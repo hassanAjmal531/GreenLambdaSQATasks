@@ -8,6 +8,7 @@ describe('Devices modules', () => {
   const devicesPage = new DevicesPage()
   it("verify that devices data can be exported in csv formate", ()=>{
     homepage.navigateTodevicesInDevicesTab()
+    devicesPage.searchDeviceUsingTenant("Cyberdyne Systems")
     devicesPage.exportDeviceData()
     devicesPage.verifyDownloadedFile()
   })
