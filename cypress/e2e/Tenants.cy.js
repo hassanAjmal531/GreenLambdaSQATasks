@@ -7,7 +7,7 @@ describe('Tenants Module', () => {
   const homepage = new HomePage()
 
    
-    it('verify that new tenant can be created', () => {
+    it('Verify that admin user can create a new tenant in customer group', () => {
       homepage.navigateToTenantsInOrganizationTab()
       tenantsPage.clickAddButton()
       cy.fixture('tenantData').then(tenantData=>{
@@ -15,7 +15,7 @@ describe('Tenants Module', () => {
         tenantsPage.verifyNewTenant(tenantData)
       })
     })
-    it("verify that tenant can be searched and updated",()=>{
+    it("Verify the admin can update/modify that tenants",()=>{
       homepage.navigateToTenantsInOrganizationTab()
 
       cy.fixture("tenantData").then(tenantData=>{

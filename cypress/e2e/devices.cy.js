@@ -6,7 +6,7 @@ const HomePage = require("../pages/homepage")
 describe('Devices modules', () => {
   const homepage = new HomePage()
   const devicesPage = new DevicesPage()
-  it("verify that devices data can be exported in csv formate", ()=>{
+  it("Verify that tenants devices data can be exported in csv format", ()=>{
     homepage.navigateTodevicesInDevicesTab()
     devicesPage.searchDeviceUsingTenant("Cyberdyne Systems")
     devicesPage.exportDeviceData()
