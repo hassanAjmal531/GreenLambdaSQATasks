@@ -22,11 +22,13 @@ import './commands'
 require('cypress-xpath');
 require ('cypress-iframe');
 
-before(()=>{
-    cy.visit("/")
-    cy.login("FMUser102","P@ssword12!")
-})
+// before(()=>{
+//     cy.visit("/")
+   
+// })
 
 beforeEach(()=>{
     cy.visit("/")
+    cy.login("FMUser102","P@ssword12!")
+   
 })
