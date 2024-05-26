@@ -1,5 +1,4 @@
 # GreenLambdaSQATasks
-# Automated Test Suite for [Project Name]
 
 ## Description
 
